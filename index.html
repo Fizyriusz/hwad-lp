@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro Warriors Auto Detailing</title>
+    <style>
+        :root {
+            --dark-blue: #0a1726;
+            --medium-blue: #1a2a3a;
+            --light-blue: #2c3e50;
+            --accent-silver: #d3d3d3;
+            --text-light: #ffffff;
+            --text-dark: #0a1726;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Custom Norse-inspired font for headings */
+        @font-face {
+            font-family: 'Norse';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js');
+            font-display: swap;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* Viking-inspired decorative element */
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-silver), transparent);
+            margin: 2rem auto;
+            width: 80%;
+            position: relative;
+        }
+
+        .divider::before, .divider::after {
+            content: "⚔️";
+            position: absolute;
+            top: -15px;
+            font-size: 1.5rem;
+        }
+
+        .divider::before {
+            left: calc(50% - 40px);
+        }
+
+        .divider::after {
+            right: calc(50% - 40px);
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(10, 23, 38, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-silver);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .logo img {
+    height: 100%;
+    max-height: 80px; /* Dla bezpieczeństwa, by nie wychodziło poza header */
+    width: auto;
+}
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-silver);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(10, 23, 38, 0.7), rgba(10, 23, 38, 0.7)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50l15-30m0 60l-15-30m-15 0l15 30m0-60l-15 30' stroke='%23d3d3d3' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-logo {
+    width: 80%; /* możesz zwiększyć np. do 300px */
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-silver);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-silver);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-silver);
+        }
+
+        /* About Us / Storytelling */
+        .about {
+            background-color: var(--medium-blue);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-silver);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Viking ship silhouette background */
+        .ship-bg {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cpath d='M50,500 C200,450 600,450 750,500 L750,600 L50,600 Z' fill='%231a2a3a' stroke='%23d3d3d3' stroke-width='2'/%3E%3Cpath d='M400,150 L600,500 L200,500 Z' fill='none' stroke='%23d3d3d3' stroke-width='2'/%3E%3Cpath d='M200,500 L600,500' stroke='%23d3d3d3' stroke-width='2'/%3E%3Cpath d='M400,150 L400,500' stroke='%23d3d3d3' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Services */
+        .services {
+            background-color: var(--dark-blue);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--medium-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(211, 211, 211, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='none' stroke='%23d3d3d3' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-silver);
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-weight: bold;
+            color: var(--accent-silver);
+            font-size: 1.2rem;
+        }
+
+        /* Calendar */
+        .calendar-section {
+            background-color: var(--medium-blue);
+            position: relative;
+        }
+
+        .calendar-container {
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .month-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-month {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-silver);
+        }
+
+        .month-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .month-nav button {
+            background-color: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .month-nav button:hover {
+            color: var(--accent-silver);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-day.available {
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .calendar-day.unavailable {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.weekend {
+            background-color: rgba(211, 211, 211, 0.05);
+        }
+
+        .calendar-day span {
+            font-size: 1.2rem;
+        }
+
+        .calendar-day small {
+            font-size: 0.7rem;
+            margin-top: 0.25rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .day-label {
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: var(--accent-silver);
+        }
+
+        .calendar-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .calendar-info p {
+            margin-bottom: 1rem;
+        }
+
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .legend-available {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .legend-unavailable {
+            background-color: rgba(255, 255, 255, 0.05);
+            opacity: 0.5;
+        }
+
+        /* Location */
+        .location {
+            background-color: var(--dark-blue);
+            padding-bottom: 7rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-silver);
+            position: relative;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 23, 38, 0.9);
+            padding: 1.5rem;
+        }
+
+        .map-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-silver);
+        }
+
+        .map-overlay p {
+            margin-bottom: 0.5rem;
+        }
+
+        .map-frame-section {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
+    background-color: #0a1726;
+}
+
+.map-frame-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    max-width: 90vw;
+    max-height: 90vw;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.map-frame-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.frame-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; /* umożliwia klikanie mapy przez obraz */
+}
+
+        /* Contact */
+        .contact {
+            background-color: var(--medium-blue);
+            position: relative;
+            margin-top: -2rem;
+            border-radius: 16px 16px 0 0;
+            z-index: 10;
+        }
+
+        .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-silver);
+        }
+
+        .contact-info {
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center; /* <-- Środkowanie względem własnej kolumny */
+    text-align: center;   /* <- wyrówna też nagłówek */
+}
+
+.contact-socials h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-silver);
+}
+.contact-socials .social-links {
+    justify-content: flex-start;
+}
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            opacity: 0.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+    background-color: var(--accent-silver);
+    transform: scale(1.05);
+}
+
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .contact-form {
+            background-color: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--accent-silver);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(211, 211, 211, 0.3);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-silver);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-silver);
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-silver);
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(211, 211, 211, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-silver);
+        }
+
+        .footer-bottom {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-frame-container {
+                width: 90vw;
+                height: 90vw;
+            }
+        }
+
+        /* Viking-inspired decorative elements */
+        .norse-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25,50 C25,36.2 36.2,25 50,25 C63.8,25 75,36.2 75,50 C75,63.8 63.8,75 50,75 C36.2,75 25,63.8 25,50 Z M35,50 C35,41.7 41.7,35 50,35 C58.3,35 65,41.7 65,50 C65,58.3 58.3,65 50,65 C41.7,65 35,58.3 35,50 Z' stroke='%23d3d3d3' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+            background-size: 50px 50px;
+            background-repeat: repeat;
+            opacity: 0.05;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Hydro Warriors Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">O Nas</a></li>
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#calendar">Terminy</a></li>
+                    <li><a href="#location">Lokalizacja</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/logo 4x4.png" alt="Hydro Warriors Logo" class="hero-logo">
+            <p>Mistrzowie wodnej walki z brudem.</p>
+            <p>Twój okręt zasługuje na opiekę godną wojownika.</p>
+            <a href="#calendar" class="cta-button">ZAREZERWUJ TERMIN</a>
+        </div>
+    </section>
+
+    <!-- About Us / Storytelling -->
+    <section id="about" class="about">
+        <div class="norse-pattern"></div>
+        <div class="ship-bg"></div>
+        <h2>Nasza Saga</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/druzyna.png" alt="Hydro Warriors Team">
+            </div>
+            <div class="about-text">
+                <h3>Droga Wojownika</h3>
+                <p>Hydro Warriors narodziło się z pasji do perfekcji i szacunku dla rzemiosła. Podobnie jak nasi przodkowie wikingowie, którzy z precyzją i oddaniem budowali swoje drakkary, my podchodzimy do każdego pojazdu z najwyższą starannością i respektem.</p>
+                <p>Nasza drużyna składa się z wojowników detailingu, dla których praca nie jest jedynie obowiązkiem, ale sposobem życia. Walczymy z brudem, zanieczyszczeniami i śladami czasu, by przywrócić Twojemu pojazdowi dawną chwałę.</p>
+                <p>Tak jak wikingowie przemierzali oceany w poszukiwaniu nowych lądów, my nieustannie poszukujemy nowych technik i rozwiązań, by zapewnić Twojemu pojazdowi najlepszą możliwą ochronę. Nasze metody łączą tradycyjne rzemiosło z nowoczesnymi technologiami, tworząc usługę godną bogów z Asgardu.</p>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <h2>Nasze Usługi</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Oczyszczanie Pokładu - bazowe</h3>
+                <p>Szybkie, codzienne ogarnięcie wnętrza Twojego okrętu. Idealne, gdy potrzebujesz odświeżenia bez pełnej rewolucji.</p>
+                <div class="service-price">Od 250 PLN</div>
+            </div>
+            <div class="service-card">
+                <h3>Oczyszczanie Pokładu - flagowe</h3>
+                <p>Kompleksowe czyszczenie wnętrza - dla tych, którzy chcą przywrócić porządek i świeżość na najwyższym poziomie.</p>
+                <div class="service-price">Od 350 PLN</div>
+            </div>
+            <div class="service-card">
+                <h3>Czyszczenie kadłuba</h3>
+                <p>Kompletne zewnętrzne oczyszczanie pojazdu - dokładnie, skutecznie, z odpowiednią metodą i wykończeniem.</p>
+                <div class="service-price">Od 150 PLN</div>
+            </div>
+            <div class="service-card">
+                <h3>Odświeżanie poszycia</h3>
+                <p>Usługa dla tych, którzy chcą nadać lakierowi nowy blask. Łączy pełne mycie kadłuba z polerowaniem typu One Step. Idealna na przywrócenie głębi koloru i odświeżenie powierzchni.</p>
+                <div class="service-price">Od 550 PLN</div>
+            </div>
+            <div class="service-card">
+                <h3>Czyszczenie latarni</h3>
+                <p>Zmatowione lampy? Przezroczystość i estetyka wracają! Usługa obejmuje polerowanie i renowację przednich reflektorów.</p>
+                <div class="service-price">150 PLN</div>
+            </div>
+            <div class="service-card">
+                <h3>Niewidzialna wycieraczka</h3>
+                <p>Niewidoczna powłoka hydrofobowa na szyby. Krople deszczu znikają bez użycia wycieraczek - komfort i bezpieczeństwo w trudnych warunkach.</p>
+                <div class="service-price">80 PLN</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section">
+        <div class="norse-pattern"></div>
+        <h2>Dostępne Terminy</h2>
+        <div class="calendar-container">
+            <div class="month-selector">
+                <div class="current-month">Marzec 2025</div>
+                <div class="month-nav">
+                    <button id="prev-month">&#10094;</button>
+                    <button id="next-month">&#10095;</button>
+                </div>
+            </div>
+            
+            <div class="calendar-grid">
+               
+            </div>
+            
+            <div class="calendar-info">
+                <p>Wybierz dogodny termin i skontaktuj się z nami, aby zarezerwować swoją wizytę.</p>
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-available"></div>
+                        <span>Dostępny</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-unavailable"></div>
+                        <span>Niedostępny</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="map-frame-section">
+        <div class="map-frame-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11770.31922131958!2d17.799747787617537!3d51.67073288868656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ab57aa28beb1b%3A0x6eb509784d57effa!2sLewkowiec%2058%2C%2063-410%20Lewkowiec!5e0!3m2!1spl!2spl!4v1746474636945!5m2!1spl!2spl"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <img src="/images/ramka-mapka.png" alt="Mapa Ramka" class="frame-overlay">
+        </div>
+    </section>
+    
+
+
+   <!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="norse-pattern"></div>
+    <h2>Wyślij Sygnał</h2>
+    <div class="contact-grid">
+        <!-- Lewa kolumna -->
+        <div class="contact-info">
+            <h3>Skontaktuj się z Nami</h3>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z' fill='%23d3d3d3'/%3E%3C/svg%3E" alt="Lokalizacja" class="contact-icon">
+                    <span>Lewkowiec, 63-400 Ostrów Wielkopolski</span>
+                </div>
+                <div class="contact-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z' fill='%23d3d3d3'/%3E%3C/svg%3E" alt="Telefon" class="contact-icon">
+                    <span>+48 795 666 714</span>
+                </div>
+                <div class="contact-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z' fill='%23d3d3d3'/%3E%3C/svg%3E" alt="Telefon" class="contact-icon">
+                    <span>+48 667 961 847</span>
+                </div>
+                <div class="contact-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z' fill='%23d3d3d3'/%3E%3C/svg%3E" alt="Email" class="contact-icon">
+                    <span>hydrowarriorshq@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Prawa kolumna -->
+        <div class="contact-socials">
+            <h3>Śledź Nasze Wyprawy</h3>
+            <div class="social-links">
+                <a href="https://www.instagram.com/twojprofil" target="_blank" class="social-link" title="Instagram">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/twojprofil" target="_blank" class="social-link" title="Facebook">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+                </a>
+                <a href="https://www.tiktok.com/@twojprofil" target="_blank" class="social-link" title="TikTok">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+                </a>
+                <a href="https://linktr.ee/twojprofil" target="_blank" class="social-link" title="Linktree">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linktree.svg" alt="Linktree">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="/api/placeholder/150/60" alt="Hydro Warriors Logo" class="footer-logo">
+            <div class="footer-links">
+                <a href="#about">O Nas</a>
+                <a href="#services">Usługi</a>
+                <a href="#calendar">Terminy</a>
+                <a href="#location">Lokalizacja</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hydro Warriors Auto Detailing. Wszelkie prawa zastrzeżone.</p>
+                <p>Zaprojektowane z dumą wikinga.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for calendar functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const monthDisplay = document.querySelector('.current-month');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+        
+            const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            let availableDates = {};
+        
+            function fetchDates() {
+                return fetch('dates.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        availableDates = data;
+                        renderCalendar(currentMonth, currentYear);
+                    });
+            }
+        
+            function renderCalendar(month, year) {
+                calendarGrid.innerHTML = '';
+        
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+                const dayLabels = ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nd'];
+                dayLabels.forEach(day => {
+                    const label = document.createElement('div');
+                    label.className = 'day-label';
+                    label.textContent = day;
+                    calendarGrid.appendChild(label);
+                });
+        
+                let offset = (firstDay + 6) % 7;
+                for (let i = 0; i < offset; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'calendar-day unavailable';
+                    calendarGrid.appendChild(empty);
+                }
+        
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateObj = new Date(year, month, day);
+                    const isoDate = dateObj.toISOString().split('T')[0];
+                    const dayOfWeek = dateObj.getDay();
+        
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('calendar-day');
+        
+                    if (dayOfWeek === 6 || dayOfWeek === 0) {
+                        dayDiv.classList.add('weekend');
+                    }
+        
+                    if (availableDates[isoDate]) {
+                        dayDiv.classList.add('available');
+                        const small = document.createElement('small');
+                        small.textContent = `${availableDates[isoDate]} miejsca`;
+                        dayDiv.appendChild(document.createElement('span')).textContent = day;
+                        dayDiv.appendChild(small);
+        
+                        dayDiv.addEventListener('click', function () {
+                            const selectedDate = `${day} ${months[month]} ${year}`;
+                            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                            const messageField = document.getElementById('message');
+                            if (messageField) {
+                                messageField.value = `Dzień dobry, chciałbym zarezerwować termin na ${selectedDate}.\n\n`;
+                                messageField.focus();
+                            }
+                        });
+                    } else {
+                        dayDiv.classList.add('unavailable');
+                        dayDiv.textContent = day;
+                    }
+        
+                    calendarGrid.appendChild(dayDiv);
+                }
+        
+                monthDisplay.textContent = `${months[month]} ${year}`;
+            }
+        
+            prevMonthBtn.addEventListener('click', function () {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+        
+            nextMonthBtn.addEventListener('click', function () {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+        
+            fetchDates();
+        });
+        </script>
+        
+</body>
+</html>
