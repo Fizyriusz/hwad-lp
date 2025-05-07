@@ -150,7 +150,7 @@
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
-            <img src="/images/ramka-mapka.png" alt="Mapa Ramka" class="frame-overlay">
+            <!-- <img src="/images/ramka-mapka.png" alt="Mapa Ramka" class="frame-overlay"> -->
         </div>
     </section>
     
@@ -328,25 +328,26 @@
         
             fetchDates();
         });
-        </script>
-        
-     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+    </script>
     
-        hamburger.addEventListener('click', () => {
-            mobileNav.classList.toggle('open');
-        });
-        
-        // Zamknij menu mobilne po kliknięciu w link
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('open');
-            });
+    <script>
+        // Uproszczony skrypt hamburgera
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobile-nav');
+            if (hamburger && mobileNav) {
+                hamburger.addEventListener('click', function () {
+                    mobileNav.classList.toggle('open');
+                });
+                // Zamknij menu po kliknięciu w link
+                mobileNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileNav.classList.remove('open');
+                    });
+                });
+            }
         });
     </script>
     
-     
 </body>
 </html>
