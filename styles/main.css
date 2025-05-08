@@ -451,6 +451,11 @@ section h2::after {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.calendar-day img {
+    margin: 0 2px;
+  }
+  
+
 .day-label {
     text-align: center;
     padding: 0.5rem;
@@ -469,9 +474,12 @@ section h2::after {
 
 .calendar-legend {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
 }
 
 .legend-item {
@@ -479,6 +487,11 @@ section h2::after {
     align-items: center;
     gap: 0.5rem;
 }
+
+.legend-item img {
+    width: 20px;
+    height: 20px;
+  }
 
 .legend-color {
     width: 15px;
@@ -815,15 +828,37 @@ footer {
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .desktop-nav {
-        display: none;
-    }
-    .nav-spacer {
-        height: 56px;
+        display: none !important;
     }
     .mobile-nav {
+        display: none;
+        position: absolute;
         top: 56px;
-        width: 100vw;
         left: 0;
+        width: 100vw;
+        background: #0a1726;
+        z-index: 1500;
+        padding: 1.5rem 0;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .mobile-nav.open {
+        display: block;
+    }
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .mobile-nav ul li {
+        margin: 1.2rem 0;
+    }
+    .mobile-nav ul li a {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        letter-spacing: 1px;
     }
     .hero {
         padding-top: 56px;
@@ -840,12 +875,22 @@ footer {
         padding: 1rem 0.2rem;
         box-sizing: border-box;
         overflow: auto;
+        overflow-x: auto;
+        padding-bottom: 1rem;
     }
     .calendar-grid {
         grid-template-columns: repeat(7, 1fr) !important;
         gap: 0.1rem;
         min-width: 320px;
     }
+
+    .calendar-legend {
+        font-size: 0.8rem;
+      }
+    
+      .calendar-info {
+        font-size: 0.8rem;
+      }
     .calendar-day, .day-label {
         font-size: 0.7rem;
         padding: 0.05rem;
@@ -879,24 +924,24 @@ footer {
 }
 
 
-
-.mobile-nav {
-    display: none;
-    background-color: rgba(10, 23, 38, 0.95);
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+/* Ukryj mobile-nav na desktopie na 100% */
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
+    }
+    .calendar-day img {
+        width: 20px;
+        height: 20px;
+      }
 }
 
+/* Napraw wygląd mobile-nav */
 .mobile-nav ul {
-    list-style: none;
-    padding: 1rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 .mobile-nav ul li {
@@ -904,16 +949,10 @@ footer {
 }
 
 .mobile-nav ul li a {
+    font-size: 1.2rem;
+    font-weight: bold;
     color: white;
     text-decoration: none;
-    font-weight: bold;
-}
-
-/* Pokazuje menu po kliknięciu */
-.mobile-nav.open {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
 }
 
 

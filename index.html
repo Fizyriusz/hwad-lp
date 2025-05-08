@@ -139,6 +139,14 @@
                         <span>Niedostępny</span>
                     </div>
                 </div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><span>🧽</span> Bazowe</div>
+                    <div class="legend-item"><span>🧼</span> Flagowe</div>
+                    <div class="legend-item"><span>🚿</span> Kadłub</div>
+                    <div class="legend-item"><span>✨</span> Polerka</div>
+                    <div class="legend-item"><span>💡</span> Latarnie</div>
+                    <div class="legend-item"><span>🌧️</span> Wycieraczka</div>
+                </div>
             </div>
         </div>
     </section>
@@ -247,7 +255,15 @@
                         renderCalendar(currentMonth, currentYear);
                     });
             }
-        
+            const serviceIcons = {
+    B: "🧽", // Bazowe
+    F: "🧼", // Flagowe
+    K: "🚿", // Kadłub
+    P: "✨", // Polerka (poszycie)
+    L: "💡", // Latarnie
+    W: "🌧️"  // Wycieraczka
+};
+
             function renderCalendar(month, year) {
                 calendarGrid.innerHTML = '';
         
@@ -284,7 +300,10 @@
                     if (availableDates[isoDate]) {
                         dayDiv.classList.add('available');
                         const small = document.createElement('small');
-                        small.textContent = `${availableDates[isoDate]} miejsca`;
+                        const icons = availableDates[isoDate]
+    .map(code => serviceIcons[code] || code)
+    .join(' ');
+small.textContent = icons;
                         dayDiv.appendChild(document.createElement('span')).textContent = day;
                         dayDiv.appendChild(small);
         
