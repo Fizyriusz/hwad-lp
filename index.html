@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydro Warriors Auto Detailing</title>
     <link rel="stylesheet" href="styles/main.css">
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Header/Navigation -->
@@ -22,7 +24,7 @@
             <ul>
                 <li><a href="#about">O Nas</a></li>
                 <li><a href="#services">Usługi</a></li>
-                <li><a href="#calendar">Terminy</a></li>
+                <li><a href="#calendar">Kalendarz</a></li>
                 <li><a href="#location">Lokalizacja</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
@@ -34,7 +36,7 @@
         <ul>
             <li><a href="#about">O Nas</a></li>
             <li><a href="#services">Usługi</a></li>
-            <li><a href="#calendar">Terminy</a></li>
+            <li><a href="#calendar">Kalendarz</a></li>
             <li><a href="#location">Lokalizacja</a></li>
             <li><a href="#contact">Kontakt</a></li>
         </ul>
@@ -47,10 +49,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="images/logo 4x4.png" alt="Hydro Warriors Logo" class="hero-logo">
-            <p>Mistrzowie wodnej walki z brudem.</p>
-            <p>Twój okręt zasługuje na opiekę godną wojownika.</p>
-            <a href="#calendar" class="cta-button">ZAREZERWUJ TERMIN</a>
+            <img src="images/logohero.webp" alt="Hydro Warriors Logo" class="hero-logo">
+            <h1 style="font-weight:bold;font-size:2.6rem;">Uzbroimy każde auto do nowych wypraw!</h1>
+            <p style="font-weight:bold;">Bo Twój okręt zasługuje na opiekę godną wojownika.</p>
+            <a href="#calendar" class="cta-button">Zaplanuj wizytę</a>
         </div>
     </section>
 
@@ -78,79 +80,82 @@
         <h2>Nasze Usługi</h2>
         <div class="services-grid">
             <div class="service-card">
+                <img src="images/ikonka 3.svg" alt="Bazowe" class="service-corner-icon">
                 <h3>Oczyszczanie Pokładu - bazowe</h3>
                 <p>Szybkie, codzienne ogarnięcie wnętrza Twojego okrętu. Idealne, gdy potrzebujesz odświeżenia bez pełnej rewolucji.</p>
                 <div class="service-price">Od 250 PLN</div>
             </div>
             <div class="service-card">
+                <img src="images/ikonka 1.svg" alt="Flagowe" class="service-corner-icon">
                 <h3>Oczyszczanie Pokładu - flagowe</h3>
                 <p>Kompleksowe czyszczenie wnętrza - dla tych, którzy chcą przywrócić porządek i świeżość na najwyższym poziomie.</p>
                 <div class="service-price">Od 350 PLN</div>
             </div>
             <div class="service-card">
-                <h3>Czyszczenie kadłuba</h3>
+                <img src="images/ikonka 2.svg" alt="Kadłub" class="service-corner-icon">
+                <h3>Czyszczenie Kadłuba</h3>
                 <p>Kompletne zewnętrzne oczyszczanie pojazdu - dokładnie, skutecznie, z odpowiednią metodą i wykończeniem.</p>
                 <div class="service-price">Od 150 PLN</div>
             </div>
             <div class="service-card">
+                <img src="images/ikonka 4.svg" alt="Poszycie" class="service-corner-icon">
                 <h3>Odświeżanie poszycia</h3>
                 <p>Usługa dla tych, którzy chcą nadać lakierowi nowy blask. Łączy pełne mycie kadłuba z polerowaniem typu One Step. Idealna na przywrócenie głębi koloru i odświeżenie powierzchni.</p>
                 <div class="service-price">Od 550 PLN</div>
             </div>
             <div class="service-card">
-                <h3>Czyszczenie latarni</h3>
+                <img src="images/ikonka 5.svg" alt="Latarnie" class="service-corner-icon">
+                <h3>Czyszczenie Latarni</h3>
                 <p>Zmatowione lampy? Przezroczystość i estetyka wracają! Usługa obejmuje polerowanie i renowację przednich reflektorów.</p>
                 <div class="service-price">150 PLN</div>
             </div>
             <div class="service-card">
-                <h3>Niewidzialna wycieraczka</h3>
+                <img src="images/ikonka 6.svg" alt="Wycieraczka" class="service-corner-icon">
+                <h3>Niewidzialna Wycieraczka</h3>
                 <p>Niewidoczna powłoka hydrofobowa na szyby. Krople deszczu znikają bez użycia wycieraczek - komfort i bezpieczeństwo w trudnych warunkach.</p>
                 <div class="service-price">80 PLN</div>
             </div>
         </div>
     </section>
 
-    <!-- Calendar Section -->
-    <section id="calendar" class="calendar-section">
-        <div class="norse-pattern"></div>
-        <h2>Dostępne Terminy</h2>
-        <div class="calendar-container">
-            <div class="month-selector">
-                <div class="current-month">Marzec 2025</div>
-                <div class="month-nav">
-                    <button id="prev-month">&#10094;</button>
-                    <button id="next-month">&#10095;</button>
-                </div>
-            </div>
-            
-            <div class="calendar-grid">
-               
-            </div>
-            
-            <div class="calendar-info">
-                <p>Wybierz dogodny termin i skontaktuj się z nami, aby zarezerwować swoją wizytę.</p>
-                <div class="calendar-legend">
-                    <div class="legend-item">
-                        <div class="legend-color legend-available"></div>
-                        <span>Dostępny</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color legend-unavailable"></div>
-                        <span>Niedostępny</span>
-                    </div>
-                </div>
-                <div class="calendar-legend">
-                    <div class="legend-item"><span>🧽</span> Bazowe</div>
-                    <div class="legend-item"><span>🧼</span> Flagowe</div>
-                    <div class="legend-item"><span>🚿</span> Kadłub</div>
-                    <div class="legend-item"><span>✨</span> Polerka</div>
-                    <div class="legend-item"><span>💡</span> Latarnie</div>
-                    <div class="legend-item"><span>🌧️</span> Wycieraczka</div>
-                </div>
+    <!-- Calendar Section (FullCalendar) -->
+    <section id="calendar">
+        <h2>Wybierz dogodny termin</h2>
+        <div class="divider"></div>
+        <div id="fullcalendar" style="max-width: 700px; margin: 2rem auto; background: #1a2a3a; border-radius: 10px; padding: 1rem;"></div>
+        <div class="calendar-legend">
+            <strong>Legenda:</strong>
+            <span class="legend-item">
+                <img src="images/ikonka 3.svg" alt="Bazowe" class="legend-svg"> - Bazowe
+            </span>
+            <span class="legend-item">
+                <img src="images/ikonka 2.svg" alt="Flagowe" class="legend-svg"> - Flagowe
+            </span>
+            <span class="legend-item">
+                <img src="images/ikonka 1.svg" alt="Kadłub" class="legend-svg"> - Kadłub
+            </span>
+            <span class="legend-item">
+                <img src="images/ikonka 4.svg" alt="Poszycie" class="legend-svg"> - Poszycie
+            </span>
+            <span class="legend-item">
+                <img src="images/ikonka 5.svg" alt="Latarnie" class="legend-svg"> - Latarnie
+            </span>
+            <span class="legend-item">
+                <img src="images/ikonka 6.svg" alt="Wycieraczka" class="legend-svg"> - Wycieraczka
+            </span>
+        </div>
+        <!-- Modal do szczegółów dnia -->
+        <div id="calendar-modal" class="calendar-modal" style="display:none;">
+            <div class="calendar-modal-content">
+                <span id="calendar-modal-close" class="calendar-modal-close">&times;</span>
+                <div id="calendar-modal-body"></div>
             </div>
         </div>
     </section>
 
+    <!-- Nagłówek nad mapą -->
+    <h2 style="text-align:center;font-size:2.5rem;margin-bottom:1rem;font-weight:bold;">Nasz Obóz</h2>
+    <div class="divider"></div>
     <section id="location" class="map-frame-section">
         <div class="map-frame-container">
             <iframe
@@ -222,7 +227,7 @@
             <div class="footer-links">
                 <a href="#about">O Nas</a>
                 <a href="#services">Usługi</a>
-                <a href="#calendar">Terminy</a>
+                <a href="#calendar">Kalendarz</a>
                 <a href="#location">Lokalizacja</a>
                 <a href="#contact">Kontakt</a>
             </div>
@@ -233,120 +238,104 @@
         </div>
     </footer>
 
-    <!-- Simple JavaScript for calendar functionality -->
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const calendarGrid = document.querySelector('.calendar-grid');
-            const monthDisplay = document.querySelector('.current-month');
-            const prevMonthBtn = document.getElementById('prev-month');
-            const nextMonthBtn = document.getElementById('next-month');
-        
-            const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
-            let currentDate = new Date();
-            let currentMonth = currentDate.getMonth();
-            let currentYear = currentDate.getFullYear();
-            let availableDates = {};
-        
-            function fetchDates() {
-                return fetch('dates.json')
-                    .then(res => res.json())
-                    .then(data => {
-                        availableDates = data;
-                        renderCalendar(currentMonth, currentYear);
-                    });
-            }
-            const serviceIcons = {
-    B: "🧽", // Bazowe
-    F: "🧼", // Flagowe
-    K: "🚿", // Kadłub
-    P: "✨", // Polerka (poszycie)
-    L: "💡", // Latarnie
-    W: "🌧️"  // Wycieraczka
-};
-
-            function renderCalendar(month, year) {
-                calendarGrid.innerHTML = '';
-        
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-        
-                const dayLabels = ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nd'];
-                dayLabels.forEach(day => {
-                    const label = document.createElement('div');
-                    label.className = 'day-label';
-                    label.textContent = day;
-                    calendarGrid.appendChild(label);
-                });
-        
-                let offset = (firstDay + 6) % 7;
-                for (let i = 0; i < offset; i++) {
-                    const empty = document.createElement('div');
-                    empty.className = 'calendar-day unavailable';
-                    calendarGrid.appendChild(empty);
-                }
-        
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dateObj = new Date(year, month, day);
-                    const isoDate = dateObj.toISOString().split('T')[0];
-                    const dayOfWeek = dateObj.getDay();
-        
-                    const dayDiv = document.createElement('div');
-                    dayDiv.classList.add('calendar-day');
-        
-                    if (dayOfWeek === 6 || dayOfWeek === 0) {
-                        dayDiv.classList.add('weekend');
-                    }
-        
-                    if (availableDates[isoDate]) {
-                        dayDiv.classList.add('available');
-                        const small = document.createElement('small');
-                        const icons = availableDates[isoDate]
-    .map(code => serviceIcons[code] || code)
-    .join(' ');
-small.textContent = icons;
-                        dayDiv.appendChild(document.createElement('span')).textContent = day;
-                        dayDiv.appendChild(small);
-        
-                        dayDiv.addEventListener('click', function () {
-                            const selectedDate = `${day} ${months[month]} ${year}`;
-                            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                            const messageField = document.getElementById('message');
-                            if (messageField) {
-                                messageField.value = `Dzień dobry, chciałbym zarezerwować termin na ${selectedDate}.\n\n`;
-                                messageField.focus();
-                            }
-                        });
-                    } else {
-                        dayDiv.classList.add('unavailable');
-                        dayDiv.textContent = day;
-                    }
-        
-                    calendarGrid.appendChild(dayDiv);
-                }
-        
-                monthDisplay.textContent = `${months[month]} ${year}`;
-            }
-        
-            prevMonthBtn.addEventListener('click', function () {
-                currentMonth--;
-                if (currentMonth < 0) {
-                    currentMonth = 11;
-                    currentYear--;
-                }
-                renderCalendar(currentMonth, currentYear);
-            });
-        
-            nextMonthBtn.addEventListener('click', function () {
-                currentMonth++;
-                if (currentMonth > 11) {
-                    currentMonth = 0;
-                    currentYear++;
-                }
-                renderCalendar(currentMonth, currentYear);
-            });
-        
-            fetchDates();
+    // Funkcja do pobierania danych z dates.json i generowania eventów
+    async function getCalendarEvents() {
+      const res = await fetch('dates.json');
+      const data = await res.json();
+      const events = [];
+      for (const [date, info] of Object.entries(data)) {
+        events.push({
+          title: info.desc,
+          start: date,
+          extendedProps: {
+            services: info.services,
+            icons: info.icons,
+            desc: info.desc
+          },
+          color: info.desc.toLowerCase().includes('brak') ? '#a94442' : '#2ecc71',
+          textColor: '#fff'
         });
+      }
+      return events;
+    }
+
+    function getDayShortName(dayIndex) {
+      // 0 = niedziela, 1 = poniedziałek, ...
+      const days = ['Nd', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob'];
+      return days[dayIndex];
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      const calendarEl = document.getElementById('fullcalendar');
+      const events = await getCalendarEvents();
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'pl',
+        height: 'auto',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: ''
+        },
+        dayHeaderContent: function(arg) {
+          return getDayShortName(arg.dow);
+        },
+        events: events,
+        eventClick: function(info) {
+          // Wyświetl modal ze szczegółami
+          const modal = document.getElementById('calendar-modal');
+          const body = document.getElementById('calendar-modal-body');
+          let servicesHtml = '';
+          if (info.event.extendedProps.services && info.event.extendedProps.services.length) {
+            servicesHtml = '<ul style="margin:0.5rem 0 0 0;list-style:none;padding:0;">' +
+              info.event.extendedProps.services.map(s => `<li style='display:flex;align-items:center;gap:0.5em;margin:0.3em 0;'><img src='images/${s.icon}' alt='' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${s.name}</li>`).join('') +
+              '</ul>';
+          } else {
+            servicesHtml = '<div style="margin-top:0.5rem;">Brak usług</div>';
+          }
+          body.innerHTML = `
+            <div style='margin:0.5rem 0;'>${info.event.extendedProps.desc}</div>
+            <div style='font-weight:bold;margin-bottom:0.5rem;'>Dostępne w tym dniu:</div>
+            ${servicesHtml}
+          `;
+          modal.style.display = 'block';
+        },
+        eventDisplay: 'block',
+        eventContent: function(arg) {
+          // Pokazuj SVG w widoku miesiąca
+          if (arg.event.extendedProps.icons && arg.event.extendedProps.icons.length) {
+            return { html: arg.event.extendedProps.icons.map(icon => `<img src='images/${icon}' class='legend-svg' style='width:1.3em;height:1.3em;margin:0 1px;vertical-align:middle;filter:brightness(0) invert(1);'>`).join('') };
+          }
+          return { html: '' };
+        },
+        dayCellDidMount: function(arg) {
+          // Dopasuj kolory komórek
+          arg.el.style.background = '#223044';
+          arg.el.style.color = '#fff';
+          arg.el.style.border = '1px solid #2c3e50';
+        },
+        dayHeaderDidMount: function(arg) {
+          arg.el.style.background = '#1a2a3a';
+          arg.el.style.color = '#d3d3d3';
+          arg.el.style.fontWeight = 'bold';
+          arg.el.style.fontSize = '1rem';
+        }
+      });
+      calendar.render();
+
+      // Modal obsługa zamykania
+      document.getElementById('calendar-modal-close').onclick = function() {
+        document.getElementById('calendar-modal').style.display = 'none';
+      };
+      window.onclick = function(event) {
+        if (event.target == document.getElementById('calendar-modal')) {
+          document.getElementById('calendar-modal').style.display = 'none';
+        }
+      };
+    });
     </script>
     
     <script>
@@ -368,5 +357,29 @@ small.textContent = icons;
         });
     </script>
     
+    <script>
+    // Poprawka modulara: jeśli są dwie usługi, wstaw 'lub' pomiędzy
+    function renderServicesList(services) {
+      if (!services || services.length === 0) return '<div style="margin-top:0.5rem;">Brak usług</div>';
+      if (services.length === 2) {
+        return `<div style='display:flex;align-items:center;justify-content:center;gap:0.7em;'>
+          <span style='display:flex;align-items:center;gap:0.3em;'><img src='images/${services[0].icon}' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${services[0].name}</span>
+          <span style='font-weight:bold;'>lub</span>
+          <span style='display:flex;align-items:center;gap:0.3em;'><img src='images/${services[1].icon}' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${services[1].name}</span>
+        </div>`;
+      }
+      return '<ul style="margin:0.5rem 0 0 0;list-style:none;padding:0;">' +
+        services.map(s => `<li style='display:flex;align-items:center;gap:0.5em;margin:0.3em 0;'><img src='images/${s.icon}' alt='' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${s.name}</li>`).join('') +
+        '</ul>';
+    }
+    </script>
+    
 </body>
 </html>
+
+<style>
+/* Usuwam mieczyki z .divider */
+.divider::before, .divider::after {
+  content: none !important;
+}
+</style>
