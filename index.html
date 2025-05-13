@@ -6,7 +6,7 @@
     <title>Hydro Warriors Auto Detailing</title>
     <link rel="stylesheet" href="styles/main.css">
     <!-- FullCalendar CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" /> -->
 </head>
 <body>
 <!-- Header/Navigation -->
@@ -52,10 +52,10 @@
             <img src="images/logohero.webp" alt="Hydro Warriors Logo" class="hero-logo">
             <h1 style="font-weight:bold;font-size:2.6rem;">Uzbroimy każde auto do nowych wypraw!</h1>
             <p style="font-weight:bold;">Bo Twój okręt zasługuje na opiekę godną wojownika.</p>
-            <a href="#calendar" class="cta-button">Zaplanuj wizytę</a>
         </div>
     </section>
-
+    <!-- Przycisk CTA na końcu body, zawsze na wierzchu -->
+    <a href="#calendar" class="cta-button">Zaplanuj wizytę</a>
     <!-- About Us / Storytelling -->
     <section id="about" class="about">
         <div class="norse-pattern"></div>
@@ -154,9 +154,9 @@
     </section>
 
     <!-- Nagłówek nad mapą -->
-    <h2 style="text-align:center;font-size:2.5rem;margin-bottom:1rem;font-weight:bold;">Nasz Obóz</h2>
-    <div class="divider"></div>
     <section id="location" class="map-frame-section">
+        <h2 style="text-align:center;font-size:2.5rem;margin-bottom:1rem;font-weight:bold;">Nasz Obóz</h2>
+        <div class="divider"></div>
         <div class="map-frame-container">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11770.31922131958!2d17.799747787617537!3d51.67073288868656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ab57aa28beb1b%3A0x6eb509784d57effa!2sLewkowiec%2058%2C%2063-410%20Lewkowiec!5e0!3m2!1spl!2spl!4v1746474636945!5m2!1spl!2spl"
@@ -374,6 +374,7 @@
     }
     </script>
     
+
 </body>
 </html>
 

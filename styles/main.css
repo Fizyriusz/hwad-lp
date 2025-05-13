@@ -40,7 +40,6 @@ h1, h2, h3, h4 {
     background: linear-gradient(90deg, transparent, var(--accent-silver), transparent);
     margin: 2rem auto;
     width: 80%;
-    position: relative;
 }
 
 .divider::before, .divider::after {
@@ -117,7 +116,6 @@ nav ul li a {
     font-size: 0.9rem;
     letter-spacing: 1px;
     padding: 0.5rem 0;
-    position: relative;
     transition: 0.3s ease;
 }
 
@@ -146,7 +144,6 @@ nav ul li a:hover::after {
     background-attachment: fixed;
     display: flex;
     align-items: center;
-    position: relative;
     overflow: hidden;
 }
 
@@ -200,9 +197,12 @@ filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
     letter-spacing: 1px;
     border: 2px solid var(--accent-silver);
     transition: all 0.3s ease;
-    position: relative;
     overflow: hidden;
     font-size: 1.1rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 2rem 0;
 }
 
 .cta-button::before {
@@ -238,7 +238,6 @@ section h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    position: relative;
 }
 
 section h2::after {
@@ -255,7 +254,6 @@ section h2::after {
 /* About Us / Storytelling */
 .about {
     background-color: var(--medium-blue);
-    position: relative;
 }
 
 .about-content {
@@ -324,7 +322,6 @@ section h2::after {
     border-radius: 8px;
     padding: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
     overflow: hidden;
     border: 1px solid rgba(211, 211, 211, 0.1);
 }
@@ -367,7 +364,6 @@ section h2::after {
 /* Calendar */
 .calendar-section {
     background-color: var(--medium-blue);
-    position: relative;
 }
 
 .calendar-container {
@@ -538,7 +534,6 @@ section h2::after {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border: 2px solid var(--accent-silver);
-    position: relative;
 }
 
 .map-container img {
@@ -566,46 +561,45 @@ section h2::after {
     margin-bottom: 0.5rem;
 }
 
+/* Mapka - responsywny układ */
 .map-frame-section {
-display: flex;
-justify-content: center;
-padding: 4rem 0;
-background-color: #0a1726;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 0;
+  background-color: #0a1726;
 }
-
 .map-frame-container {
-position: relative;
-width: 600px;
-height: 600px;
-max-width: 90vw;
-max-height: 90vw;
-overflow: hidden;
-border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--accent-silver);
 }
-
 .map-frame-container iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
-
-.frame-overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 2;
-pointer-events: none; /* umożliwia klikanie mapy przez obraz */
+@media (min-width: 900px) {
+  .map-frame-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  .map-frame-container {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 /* Contact */
 .contact {
     background-color: var(--medium-blue);
-    position: relative;
     margin-top: -2rem;
     border-radius: 16px 16px 0 0;
     z-index: 10;
@@ -807,6 +801,12 @@ footer {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+    .contact-info {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        max-width: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -814,9 +814,6 @@ footer {
         height: 56px;
         min-height: 56px;
         background-color: #0a1726;
-    }
-    .nav-container {
-        position: relative;
     }
     .logo {
         height: 32px;
@@ -927,7 +924,7 @@ footer {
         transform: translateX(-50%);
         width: 90vw;
         max-width: 400px;
-        z-index: 9999;
+        z-index: 99999;
         box-shadow: 0 8px 32px rgba(0,0,0,0.25);
         border-radius: 2em;
         padding: 1.2rem 0;
@@ -938,6 +935,10 @@ footer {
         opacity: 1;
         border: 2px solid #d3d3d3;
         display: block !important;
+        margin: 0;
+    }
+    .cta-button.hide-on-section {
+        display: none !important;
     }
     .fc-daygrid-day .legend-svg {
         margin: 0 0.18em;
@@ -1184,7 +1185,7 @@ html {
   max-width: 350px;
   color: #fff;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-  position: relative;
+
   text-align: center;
 }
 .calendar-modal-close {
@@ -1205,6 +1206,7 @@ html {
   background: #223044;
   color: #fff;
   border: 1px solid #2c3e50;
+  position: static !important;
 }
 #fullcalendar .fc-daygrid-day.fc-day-today {
   background: #2c3e50 !important;
@@ -1258,33 +1260,27 @@ html {
   pointer-events: none;
 }
 
-.service-card {
-  position: relative;
-}
 
-/* Pływający przycisk na mobile - ciemne tło, cień, zaokrąglenie, odstęp od dołu */
+/* Pływający przycisk na mobile - zawsze na wierzchu */
 @media (max-width: 768px) {
   .cta-button {
-    position: fixed;
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%);
-    width: 90vw;
-    max-width: 400px;
-    z-index: 9999;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    border-radius: 2em;
-    padding: 1.2rem 0;
-    font-size: 1.2rem;
-    text-align: center;
-    background: #1a2a3a;
-    color: #fff;
-    opacity: 1;
-    border: 2px solid #d3d3d3;
-    display: block !important;
+    z-index: 2147483647;
   }
-  .cta-button.hide-on-section {
-    display: none !important;
-  }
+}
+  
+.service-card,
+.map-frame-container,
+.calendar-section,
+.nav-container,
+.about,
+.contact,
+.hero-content,
+.divider,
+.services-grid,
+.footer-content,
+.calendar-list,
+.calendar-carousel,
+.calendar-modal-content {
+  position: relative;
 }
   
