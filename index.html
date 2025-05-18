@@ -7,6 +7,41 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- FullCalendar CSS -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" /> -->
+    <!-- Favicony podstawowe -->
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="images/favicon-16x16.png" sizes="16x16" type="image/png">
+
+<!-- Ikona dla urządzeń Apple -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<!-- Manifest PWA -->
+<link rel="manifest" href="images/site.webmanifest">
+
+    <!-- SEO -->
+<meta name="description" content="Profesjonalny auto detailing w stylu nordyckim. Lewkowiec / Ostrów Wlkp. Zadbaj o swój okręt z Hydro Warriors.">
+<meta name="keywords" content="auto detailing, Lewkowiec, Ostrów Wielkopolski, myjnia, polerka, czyszczenie wnętrza, wikingowie, Hydro Warriors">
+<meta name="author" content="Hydro Warriors">
+<link rel="canonical" href="https://hydrowarriors.pl" />
+
+<!-- Open Graph dla sociali -->
+<meta property="og:title" content="Hydro Warriors - Auto Detailing w stylu wikingów">
+<meta property="og:description" content="Zafunduj swojemu samochodowi rytuał oczyszczenia. Lewkowiec / Ostrów Wielkopolski.">
+<meta property="og:image" content="https://hydrowarriors.pl/images/logohero.webp">
+<meta property="og:url" content="https://hydrowarriors.pl">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7CQ8NSEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9G7CQ8NSEM');
+</script>
 </head>
 <body>
 <!-- Header/Navigation -->
@@ -57,10 +92,11 @@
     <!-- Przycisk CTA na końcu body, zawsze na wierzchu -->
     <a href="#calendar" class="cta-button">Zaplanuj wizytę</a>
     <!-- About Us / Storytelling -->
+    <h2 class="section-title">Nasza Saga</h2>
+    <div class="divider"></div>
     <section id="about" class="about">
         <div class="norse-pattern"></div>
         <div class="ship-bg"></div>
-        <h2>Nasza Saga</h2>
         <div class="about-content">
             <div class="about-image">
                 <img src="images/druzyna.png" alt="Hydro Warriors Team">
@@ -77,7 +113,8 @@
 
     <!-- Services -->
     <section id="services" class="services">
-        <h2>Nasze Usługi</h2>
+        <h2 class="section-title">Nasze Usługi</h2>
+        <div class="divider"></div>
         <div class="services-grid">
             <div class="service-card">
                 <img src="images/ikonka 3.svg" alt="Bazowe" class="service-corner-icon">
@@ -155,7 +192,7 @@
 
     <!-- Nagłówek nad mapą -->
     <section id="location" class="map-frame-section">
-        <h2 style="text-align:center;font-size:2.5rem;margin-bottom:1rem;font-weight:bold;">Nasz Obóz</h2>
+        <h2 class="section-title location-title">Nasz Obóz</h2>
         <div class="divider"></div>
         <div class="map-frame-container">
             <iframe
@@ -167,12 +204,39 @@
         </div>
     </section>
     
-
+    <!-- FAQ Section -->
+    <h2 class="section-title">Najczęściej zadawane pytania</h2>
+    <div class="divider"></div>
+    <section id="faq" class="faq-section">
+      <div class="faq-list">
+        <div>
+          <button class="faq-question">Czym jest detailing?</button>
+          <div class="faq-answer">Detailing to kompleksowe czyszczenie, renowacja i konserwacja pojazdu, mające na celu przywrócenie mu najlepszego wyglądu.</div>
+        </div>
+        <div>
+          <button class="faq-question">Jak długo trwa usługa?</button>
+          <div class="faq-answer">Czas trwania zależy od wybranej usługi – od 1,5 do nawet 6 godzin przy pełnym detailingu.</div>
+        </div>
+        <div>
+          <button class="faq-question">Czy muszę wcześniej umówić wizytę?</button>
+          <div class="faq-answer">Tak, zalecamy wcześniejszą rezerwację terminu przez kalendarz online lub telefonicznie.</div>
+        </div>
+        <div>
+          <button class="faq-question">Jakie środki są używane?</button>
+          <div class="faq-answer">Korzystamy wyłącznie z profesjonalnych, bezpiecznych środków renomowanych marek.</div>
+        </div>
+        <div>
+          <button class="faq-question">Czy detailing jest bezpieczny dla lakieru?</button>
+          <div class="faq-answer">Tak, wszystkie zabiegi są wykonywane z zachowaniem najwyższych standardów bezpieczeństwa dla lakieru i wnętrza.</div>
+        </div>
+      </div>
+    </section>
 
    <!-- Contact Section -->
+<h2 class="section-title">Wyślij Sygnał</h2>
+<div class="divider"></div>
 <section id="contact" class="contact">
     <div class="norse-pattern"></div>
-    <h2>Wyślij Sygnał</h2>
     <div class="contact-grid">
         <!-- Lewa kolumna -->
         <div class="contact-info">
@@ -285,37 +349,78 @@
         },
         events: events,
         eventClick: function(info) {
-          // Wyświetl modal ze szczegółami
-          const modal = document.getElementById('calendar-modal');
-          const body = document.getElementById('calendar-modal-body');
-          let servicesHtml = '';
-          if (info.event.extendedProps.services && info.event.extendedProps.services.length) {
-            servicesHtml = '<ul style="margin:0.5rem 0 0 0;list-style:none;padding:0;">' +
-              info.event.extendedProps.services.map(s => `<li style='display:flex;align-items:center;gap:0.5em;margin:0.3em 0;'><img src='images/${s.icon}' alt='' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${s.name}</li>`).join('') +
-              '</ul>';
-          } else {
-            servicesHtml = '<div style="margin-top:0.5rem;">Brak usług</div>';
+          // Na desktopie (>=900px) pokazuj modal po kliknięciu w event
+          if (window.innerWidth >= 900) {
+            const modal = document.getElementById('calendar-modal');
+            const body = document.getElementById('calendar-modal-body');
+            let servicesHtml = '';
+            if (info.event.extendedProps.services && info.event.extendedProps.services.length) {
+              servicesHtml = '<ul style="margin:0.5rem 0 0 0;list-style:none;padding:0;">' +
+                info.event.extendedProps.services.map(s => `<li style='display:flex;align-items:center;gap:0.5em;margin:0.3em 0;'><img src='images/${s.icon}' alt='' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${s.name}</li>`).join('') +
+                '</ul>';
+            } else {
+              servicesHtml = '<div style="margin-top:0.5rem;">Brak usług</div>';
+            }
+            body.innerHTML = `
+              <div style='margin:0.5rem 0;'>${info.event.extendedProps.desc}</div>
+              <div style='font-weight:bold;margin-bottom:0.5rem;'>Dostępne w tym dniu:</div>
+              ${servicesHtml}
+            `;
+            modal.style.display = 'block';
           }
-          body.innerHTML = `
-            <div style='margin:0.5rem 0;'>${info.event.extendedProps.desc}</div>
-            <div style='font-weight:bold;margin-bottom:0.5rem;'>Dostępne w tym dniu:</div>
-            ${servicesHtml}
-          `;
-          modal.style.display = 'block';
+        },
+        dateClick: function(info) {
+          // Na mobile/tablet (<900px) pokazuj modal po kliknięciu w dzień z eventem
+          if (window.innerWidth < 900) {
+            const dateStr = info.dateStr;
+            const event = events.find(ev => ev.start === dateStr);
+            if (event) {
+              const modal = document.getElementById('calendar-modal');
+              const body = document.getElementById('calendar-modal-body');
+              let servicesHtml = '';
+              if (event.extendedProps.services && event.extendedProps.services.length) {
+                servicesHtml = '<ul style="margin:0.5rem 0 0 0;list-style:none;padding:0;">' +
+                  event.extendedProps.services.map(s => `<li style='display:flex;align-items:center;gap:0.5em;margin:0.3em 0;'><img src='images/${s.icon}' alt='' style='width:1.5em;height:1.5em;filter:brightness(0) invert(1);'>${s.name}</li>`).join('') +
+                  '</ul>';
+              } else {
+                servicesHtml = '<div style="margin-top:0.5rem;">Brak usług</div>';
+              }
+              body.innerHTML = `
+                <div style='margin:0.5rem 0;'>${event.extendedProps.desc}</div>
+                <div style='font-weight:bold;margin-bottom:0.5rem;'>Dostępne w tym dniu:</div>
+                ${servicesHtml}
+              `;
+              modal.style.display = 'block';
+            }
+          }
         },
         eventDisplay: 'block',
         eventContent: function(arg) {
-          // Pokazuj SVG w widoku miesiąca
-          if (arg.event.extendedProps.icons && arg.event.extendedProps.icons.length) {
+          // Ikonki tylko na desktopie (>=900px)
+          if (window.innerWidth >= 900 && arg.event.extendedProps.icons && arg.event.extendedProps.icons.length) {
             return { html: arg.event.extendedProps.icons.map(icon => `<img src='images/${icon}' class='legend-svg' style='width:1.3em;height:1.3em;margin:0 1px;vertical-align:middle;filter:brightness(0) invert(1);'>`).join('') };
           }
+          // Na mobile/tablet nie pokazuj ikonek
           return { html: '' };
         },
         dayCellDidMount: function(arg) {
-          // Dopasuj kolory komórek
-          arg.el.style.background = '#223044';
-          arg.el.style.color = '#fff';
-          arg.el.style.border = '1px solid #2c3e50';
+          // Kolorowe obramowania na mobile/tablet (<900px)
+          if (window.innerWidth < 900) {
+            const dateStr = arg.date.toISOString().slice(0, 10);
+            const event = events.find(ev => ev.start === dateStr);
+            if (event && !event.title.toLowerCase().includes('brak')) {
+              arg.el.style.border = '2px solid #2ecc71'; // zielony
+            } else {
+              arg.el.style.border = '2px solid #888'; // szary
+            }
+            // Usuwanie ikonek na mobile/tablet (gdyby się pojawiły)
+            const icons = arg.el.querySelectorAll('.legend-svg');
+            icons.forEach(icon => icon.style.display = 'none');
+          } else {
+            arg.el.style.background = '#223044';
+            arg.el.style.color = '#fff';
+            arg.el.style.border = '1px solid #2c3e50';
+          }
         },
         dayHeaderDidMount: function(arg) {
           arg.el.style.background = '#1a2a3a';
@@ -374,6 +479,14 @@
     }
     </script>
     
+    <script>
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const parent = this.parentElement;
+          parent.classList.toggle('open');
+        });
+      });
+    </script>
 
 </body>
 </html>
@@ -382,5 +495,91 @@
 /* Usuwam mieczyki z .divider */
 .divider::before, .divider::after {
   content: none !important;
+}
+
+@media (max-width: 600px) {
+  .hero-logo {
+    margin-top: 5rem !important; /* mocniej obniżone logo na mobile */
+  }
+}
+
+.faq-section {
+  background: var(--medium-blue);
+  margin: 0 auto 3rem auto;
+  padding: 3rem 1rem 2rem 1rem;
+  border-radius: 16px;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+.faq-list > div {
+  width: 100%;
+  max-width: 600px;
+}
+.faq-question {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  outline: none;
+  margin-bottom: 0.2rem;
+}
+.faq-question:hover,
+.faq-question:focus {
+  color: var(--accent-silver);
+}
+.faq-answer {
+  display: none;
+  margin-top: 0.5rem;
+  color: #d3d3d3;
+  font-size: 1rem;
+  transition: all 0.3s;
+  text-align: center;
+}
+.faq-list .open .faq-answer {
+  display: block;
+}
+
+.location-title {
+  margin-top: 4rem;
+}
+@media (max-width: 600px) {
+  .location-title {
+    margin-top: 1.5rem;
+  }
+}
+
+.hero-logo {
+  margin-top: 3rem;
+}
+@media (max-width: 600px) {
+  .hero-logo {
+    margin-top: 5rem !important;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--accent-silver);
+  width: 100%;
 }
 </style>
