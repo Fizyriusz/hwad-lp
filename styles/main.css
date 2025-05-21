@@ -1326,7 +1326,7 @@ html {
   padding-left: 1.2rem;
   transition: all 0.3s;
 }
-.faq-list li.open .faq-answer {
+.faq-list div.open .faq-answer {
   display: block;
 }
   
@@ -1411,4 +1411,71 @@ section, .faq-section, .services, .calendar-section, .calendar-container, .servi
     text-align: center !important;
   }
 
-  
+  /* ========================================
+   CTA BUTTON – DESKTOP + MOBILE FIX
+   Wklej ten blok POD końcem dotychczasowego main.css
+   lub zamień istniejące deklaracje .cta-button
+   ======================================== */
+
+/* === baza / desktop === */
+.cta-button{
+  /* establishes containing block for ::before */
+  position:relative;
+
+  /* sprawia, że "margin:auto" faktycznie centruje    */
+  display:block;
+  width:max-content;        /* tyle, ile potrzebuje tekst */
+  margin:2rem auto;         /* autko po bokach = center    */
+
+  /* --- TWOJE WŁAŚCIWE DEKLARACJE --- */
+  background-color:transparent;
+  color:var(--text-light);
+  padding:1.1rem 2.2rem;
+  text-decoration:none;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  border:2px solid var(--accent-silver);
+  font-size:1.1rem;
+  overflow:hidden;          /* potrzebne dla ::before      */
+  transition:all .3s ease;
+}
+
+.cta-button::before{
+  /* gradient błysku – zostaje bez zmian */
+  content:"";
+  position:absolute;
+  top:0;left:-100%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transition:.5s;
+}
+
+.cta-button:hover::before{ left:100%; }
+
+.cta-button:hover{
+  background:var(--accent-silver);
+  color:var(--text-dark);
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+/* === mobile: pływający fixed === */
+@media(max-width:768px){
+.cta-button{
+    position:fixed;          /* odrywa od flow */
+    left:50%;
+    transform:translateX(-50%);
+    bottom:24px;
+    width:90vw;
+    max-width:400px;
+    border-radius:2em;
+    padding:1.2rem 0;
+    font-size:1.2rem;
+    background:#1a2a3a;
+    border:2px solid #d3d3d3;
+    box-shadow:0 8px 32px rgba(0,0,0,.25);
+    z-index:2147483647;      /* zawsze nad innymi */
+    margin:0;                /* w fixed już zbędne */
+}
+}
