@@ -188,9 +188,7 @@ filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
     transition: all 0.3s ease;
     overflow: hidden;
     font-size: 1.1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 2rem 0;
+    margin: 2rem auto;
 }
 
 .cta-button::before {
@@ -237,7 +235,7 @@ section {
 section h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
@@ -1408,4 +1406,9 @@ section, .faq-section, .services, .calendar-section, .calendar-container, .servi
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+  
+  .hero-content, .section-with-cta {
+    text-align: center !important;
+  }
+
   
