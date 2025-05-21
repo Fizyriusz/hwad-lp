@@ -232,16 +232,6 @@ section {
     text-transform: uppercase;
 }
 
-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--accent-silver);
-}
 
 /* About Us / Storytelling */
 .about {
@@ -316,6 +306,7 @@ section h2::after {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     border: 1px solid rgba(211, 211, 211, 0.1);
+    position: relative;
 }
 
 .service-card::before {
@@ -329,6 +320,7 @@ section h2::after {
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.2;
+    z-index: 0;
 }
 
 .service-card:hover {
@@ -587,6 +579,8 @@ section h2::after {
     width: 600px;
     height: 600px;
   }
+  .hero-logo{ margin-top: 4rem; 
+  }   /* lub np. 6rem */
 }
 
 /* Contact */
